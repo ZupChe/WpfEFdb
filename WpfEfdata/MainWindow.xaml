@@ -7,24 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <TextBox Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="168,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtLastName" HorizontalAlignment="Left" Height="23" Margin="168,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtBirthDate" HorizontalAlignment="Left" Height="23" Margin="168,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.447,5.663"/>
-        <Label Content="First Name" HorizontalAlignment="Left" Margin="96,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="-12.28,-1.327" FontWeight="Bold"/>
-        <Label Content="Last Name" HorizontalAlignment="Left" Margin="96,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="-12.28,-1.327" FontWeight="Bold"/>
-        <Label Content="Birth Date" HorizontalAlignment="Left" Margin="96,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="-12.28,-1.327" FontWeight="Bold"/>
-        <Button x:Name="btnNew" Content="New" HorizontalAlignment="Left" Margin="168,433,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="25" Click="btnNew_Click"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="277,433,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="25" />
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="394,433,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="25"/>
-        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="508,433,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="25" Click="btnClear_Click"/>
-        <Button x:Name="btnRefreshData" Content="Refresh Data" HorizontalAlignment="Left" Margin="277,299,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnNew" Content="New" HorizontalAlignment="Left" Margin="214,433,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="25" Click="btnNew_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="369,433,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="25" Click="btnUpdate_Click" />
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="521,433,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="25" Click="btnDelete_Click"/>
         <Label Content="WPF EF Employees Data" HorizontalAlignment="Left" Margin="301,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.909,-1.137" FontWeight="Bold" FontSize="14"/>
-        <DataGrid x:Name="empList" HorizontalAlignment="Left" Height="306" Margin="369,90,0,0" VerticalAlignment="Top" Width="382" AutoGenerateColumns="False">
+        <DataGrid x:Name="empList" HorizontalAlignment="Left" Height="306" Margin="214,91,0,0" VerticalAlignment="Top" Width="400" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding EmployeeID}" Header="Employee ID"/>
-                <DataGridTextColumn Binding="{Binding FirstName}" Header="First Name"/>
-                <DataGridTextColumn Binding="{Binding LastName}" Header="Last Name"/>
-                <DataGridTextColumn Binding="{Binding BirthDate}" Header="Birth Date"/>
+                <DataGridTextColumn Binding="{Binding EmployeeID}" Header="Employee ID" Width="90"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="First Name" Width="100"/>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Last Name" Width="100"/>
+                <DataGridTextColumn Binding="{Binding BirthDate, StringFormat=\{0:dd.MM.yyyy\}}" Header="Birth Date" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

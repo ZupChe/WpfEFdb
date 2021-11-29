@@ -39,32 +39,44 @@ namespace WpfEfdata
 
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-            Clear();
-        }
-        void Clear()
-        {
-            txtFirstName.Text = txtLastName.Text = txtBirthDate.Text = "";
-            btnNew.Content = "New";
-            btnUpdate.Content = "Update";
-            btnDelete.IsEnabled = false;
-            model.EmployeeID = 0;
-        }
-
+        
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
-            SecondWindow p = new SecondWindow();
+            SecondWindow p = new SecondWindow(empList);
             p.Show();
         }
 
-     
-           
-       
-       
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            using (db = new EmpEntities())
+            {
+                Employee employee = empList.SelectedItem as Employee;
+                var udbe = db.Employees.Single(x => x.EmployeeID == employee.EmployeeID);
+                udbe.FirstName = employee.FirstName;
+                udbe.LastName = employee.LastName;
+                udbe.BirthDate = employee.BirthDate;
+                db.SaveChanges();
+            }
+            MessageBox.Show("Successfull update");
 
-     
+        }
 
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Employee employee = empList.SelectedItem as Employee;
+            if (employee?.EmployeeID != null)
+            {
+                using (db = new EmpEntities())
+                {
+
+                    var udbe = db.Employees.Single(x => x.EmployeeID == employee.EmployeeID);
+                    db.Employees.Remove(udbe);
+                    db.SaveChanges();
+                    empList.ItemsSource = db.Employees.ToList();
+                }
+                MessageBox.Show("Delete successfull");
+            }
+        }
     }
     
 }

@@ -26,5 +26,6 @@ namespace WpfEfdata
         }
     
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

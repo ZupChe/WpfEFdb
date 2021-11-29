@@ -23,12 +23,14 @@ namespace WpfEfdata
         Employee model = new Employee();
         EmpEntities db;
 
+        protected DataGrid list;
 
 
 
-        public SecondWindow()
+        public SecondWindow(DataGrid list)
         {
             InitializeComponent();
+            this.list = list;
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
@@ -41,7 +43,9 @@ namespace WpfEfdata
             {
                 emp.Employees.Add(model);
                 emp.SaveChanges();
+                list.ItemsSource = emp.Employees.ToList();
             }
+            this.Close();
             MessageBox.Show("New employee was add successfull");
             
         }
